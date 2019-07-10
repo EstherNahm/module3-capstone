@@ -5,7 +5,13 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-<c:forEach var="weather" items="${weather}">
+<c:forEach var="weather" items="${weatherForecast}">
 
 	<c:url var="weatherImage" value="/img/weather/${weather.forecast}.jpg"/>
+	<c:param name="parkCode" value="${weather.parkCode}"/>
+	
+	<p>${weather.low}</p>
+	<p>${weather.high}</p>
+	<p>${weather.forecast}</p>
+	
 </c:forEach>

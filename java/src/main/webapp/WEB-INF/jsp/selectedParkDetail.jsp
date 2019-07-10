@@ -30,8 +30,20 @@ ${park.numberOfAnimalSpecies}<br/>
 
 </div>
 
-<c:url var="formAction" value="/weatherDetail"/>
+<%-- <c:url var="formAction" value="/weatherDetail"/>
 <form method="POST" action="${formAction}">
 
 <input type="submit" value="See Weather Forecast!" />
 </form>
+ --%>
+
+<form method="post" action="selectedParkDetail">
+<div class="formInput">
+<input type="hidden" name="parkCode" id="parkCode"/>
+
+</div>
+
+<input class="formSubmitButton" type="submit" value="See Forecast"/>
+
+</form>
+
