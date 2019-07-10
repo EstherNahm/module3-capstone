@@ -39,6 +39,18 @@ public class JDBCParkDAO implements ParkDAO {
 		return theParks;
 	}
 
+	@Override
+	public Park getParkByCode(String parkCode) {
+		Park park = null;
+		String sqlSelectParkByCode = "SELECT * FROM park WHERE parkcode = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectParkByCode, parkCode);
+		if (results.next()) {
+			park = mapRowToPark(results);
+		}
+		return park;
+	}
+	
+	
 		//allows access to SQL rows
 		private Park mapRowToPark(SqlRowSet results) {
 			
@@ -63,9 +75,5 @@ public class JDBCParkDAO implements ParkDAO {
 			return park;
 		}
 
-		@Override
-		public Park getParkByCode(String parkCode) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		
 }
