@@ -1,5 +1,6 @@
 package com.techelevator.npgeek;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.techelevator.npgeek.model.FavoriteParks;
 import com.techelevator.npgeek.model.Park;
 import com.techelevator.npgeek.model.ParkDAO;
+import com.techelevator.npgeek.model.SurveyResult;
 import com.techelevator.npgeek.model.SurveyDAO;
 import com.techelevator.npgeek.model.Weather;
 import com.techelevator.npgeek.model.WeatherDAO;
@@ -68,17 +71,26 @@ public class parkController {
 		return "userInput";
 	}
 	
-//	@RequestMapping(path="/userInput", method=RequestMethod.POST)
-//	public String processUserSurveyInput(HttpSession session, @RequestParam String emailAddress, @RequestParam String state, @RequestParam String activityLevel, @RequestParam String parkCode) {
-//		SurveyResult survey = surveyDAO. //how to get a void method to save input to SQL?
-//	}
-//	
+	@RequestMapping(path="/userInput", method=RequestMethod.POST)
+	public String processUserSurveyInput(HttpSession session, @RequestParam String emailAddress, @RequestParam String state, @RequestParam String activityLevel, @RequestParam String parkCode) {
+		 surveyDAO.saveSurveyResults(parkCode, emailAddress, state, activityLevel); 
+		 return "redirect:/surveyResult";
+	}
+	
 	
 	@RequestMapping(path="/surveyResult", method=RequestMethod.GET)
 	public String showSurveyResult(ModelMap model) {
-		model.addAttribute("state", surveyDAO.getState());
+		List<Park> parks = new ArrayList<>();
+		List<FavoriteParks> favoriteparks = surveyDAO.favoriteParks();
+		for (FavoriteParks fp: favoriteparks) {
+			Park park = parkDAO.getParkByCode(fp.getParkCode());
+			parks.add(park);
+		}
+		model.addAttribute("parks", parks);
 		
 		return "surveyResult";
 		}
+	
+	
 	
 }

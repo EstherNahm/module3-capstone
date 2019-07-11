@@ -5,5 +5,5 @@ import java.util.List;
 public interface SurveyDAO {
 	public List<SurveyResult> getResults();
 	public void saveSurveyResults(String parkCode, String emailAddress, String state, String activityLevel);
-	public String getState();
+	public List<FavoriteParks> favoriteParks();
 }

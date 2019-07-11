@@ -42,14 +42,18 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		return theSurvey;
 	}
 	
-	public String getState() {
-		String state = "";
-		String sqlSelectSurveyResults = "select max(state) from survey_result;";
+	public List<FavoriteParks> favoriteParks() {
+		List<FavoriteParks> favoriteParks = new ArrayList<>();
+		String sqlSelectSurveyResults = "select count(*) as survey_count, parkcode from survey_result " + 
+				"group by parkcode " + 
+				"order by survey_count desc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectSurveyResults);
 		while (results.next()) {
-			state = results.getString(1);
+			String parkcode = results.getString("parkcode");
+			int surveyCount = results.getInt("survey_count");
+			favoriteParks.add(new FavoriteParks(parkcode, surveyCount));
 		}
-		return state;
+		return favoriteParks;
 	}
 	
 	
@@ -65,5 +69,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		
 		return survey;
 	}
+
+	
 	
 }

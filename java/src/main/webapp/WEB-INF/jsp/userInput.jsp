@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<c:url var="formAction" value="/surveyResult" /> <%--URL for when form is submitted --%>
+<c:url var="formAction" value="/userInput" /> <%--URL for when form is submitted --%>
 	<form method="POST" action="${formAction}">
 
 <label for="emailAddress">Your e-mail address:</label>
@@ -86,18 +86,18 @@
 	<br>
 	
 	<a>Your favorite park:</a>
-	<select name="parks">
+	<select name="parkCode">
 		<option value="blankToStart"></option>
-		<option value="Cuyahoga Valley National Park">Cuyahoga Valley National Park</option>
-		<option value="Everglades National Park">Everglades National Park</option>
-		<option value="Grand Canyon National Park">Grand Canyon National Park</option>
-		<option value="Glacier National Park">Glacier National Park</option>
-		<option value="Great Smoky Mountains National Park">Great Smoky Mountains National Park</option>
-		<option value="Grand Teton National Park">Grand Teton National Park</option>
-		<option value="Mount Rainier National Park">Mount Rainier National Park</option>
-		<option value="Rocky Mountain National Park">Rocky Mountain National Park</option>
-		<option value="Yellowstone National Park">Yellowstone National Park</option>
-		<option value="Yosemite National Park">Yosemite National Park</option>
+		<option value="CVNP">Cuyahoga Valley National Park</option>
+		<option value="ENP">Everglades National Park</option>
+		<option value="GCNP">Grand Canyon National Park</option>
+		<option value="GNP">Glacier National Park</option>
+		<option value="GSMNP">Great Smoky Mountains National Park</option>
+		<option value="GTNP">Grand Teton National Park</option>
+		<option value="MRNP">Mount Rainier National Park</option>
+		<option value="RMNP">Rocky Mountain National Park</option>
+		<option value="YNP">Yellowstone National Park</option>
+		<option value="YNP">Yosemite National Park</option>
 	</select>
 	<br>
 	
