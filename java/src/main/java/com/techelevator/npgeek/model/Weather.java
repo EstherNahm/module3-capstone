@@ -8,25 +8,6 @@ public class Weather {
 	private int high;
 	private String forecast;
 	
-	
-	public String weatherAdvice() {
-		if (forecast.equalsIgnoreCase("snow")) {
-			return "Bring snowshoes!";
-		} if (forecast.equalsIgnoreCase("rain")) {
-			return "Bring rain gear and waterproof shoes!";
-		} if (forecast.equalsIgnoreCase("thunderstorms")) {
-			return "Seek shelter and avoid hiking on exposed ridges!";
-		} if (forecast.equalsIgnoreCase("sun")) {
-			return "Pack sunblock!";
-		} if (high > 75) {
-			return "Bring an extra gallon of water!";
-		} if (high - low > 20) {
-			return "Wear breathable layers!"; 
-		} if (low < 20) {
-			return "Be aware of the dangers of exposure to frigid temperatures!";
-		} return "";
-	}
-	
 	/**
 	 * @return the parkCode
 	 */
