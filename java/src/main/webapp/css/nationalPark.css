@@ -1,3 +1,23 @@
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
-
+.nav{
+	background-color:#B6D7B9;
+	overflow: hidden;
+}
+.nav a{
+	
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px;
+  text-decoration: underline;
+  font-size: 24px;
+  }
+ .nav a:hover {
+  background-color: #F7F8F7;
+  color: #6B717E;
+}
+.column {
+	background-color:white;
+  flex: 33.33%;
+  padding: 5px;
+  style="width:100%">
+}
