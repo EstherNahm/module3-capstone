@@ -4,9 +4,6 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-
-
-
 <c:forEach var="weather" items="${weather}">
 
 

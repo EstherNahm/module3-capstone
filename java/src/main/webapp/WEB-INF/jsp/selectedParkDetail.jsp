@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />    
@@ -56,10 +57,19 @@ ${park.numberOfAnimalSpecies}<br/>
 	</tr>
 	
 	<tr>
+		
 		<td>${weather.fiveDayForecastValue}</td>
 		<td>${weather.forecast}</td>
-		<td>${weather.high}</td>
-		<td>${weather.low}</td>
+		
+		<c:if test="${tempUnit == 'F'}">
+			<td>${weather.high}</td>
+			<td>${weather.low}</td>
+		</c:if>
+		
+		<c:if test="${tempUnit == 'C'}">
+			<td><fmt:formatNumber type="number" maxFractionDigits="1" value="${(weather.high - 32) * .5556}"/></td>
+			<td><fmt:formatNumber type="number" maxFractionDigits="1" value="${(weather.low - 32) * .5556}"/></td>
+		</c:if>
 	</tr>
 
 <tr>
@@ -90,13 +100,21 @@ ${park.numberOfAnimalSpecies}<br/>
 </tr>	
 
 <tr>
-	
-	<c:choose>
-		<c:when test="${weather.high > 75}"><td>Bring an extra gallon of water!</td></c:when>
-		<c:when test="${weather.low < 20}"><td>Beware of the dangers of exposure to frigid temperatures!</td></c:when>
-		<c:when test="${weather.high - weather.low > 20}"><td>Wear breathable layers!</td></c:when>
-		<c:otherwise></c:otherwise>
-	</c:choose> 
+	<c:if test="${tempUnit == 'F'}">
+		<c:choose>
+			<c:when test="${weather.high > 75}"><td>Bring an extra gallon of water!</td></c:when>
+			<c:when test="${weather.low < 20}"><td>Beware of the dangers of exposure to frigid temperatures!</td></c:when>
+			<c:when test="${weather.high - weather.low > 20}"><td>Wear breathable layers!</td></c:when>
+		</c:choose> 
+	</c:if>
+		
+	<c:if test="${tempUnit == 'C'}">
+		<c:choose>
+			<c:when test="${weather.high > 23.8889}"><td>Bring an extra gallon of water!</td></c:when>
+			<c:when test="${weather.low < -6.66667}"><td>Beware of the dangers of exposure to frigid temperatures!</td></c:when>
+			<c:when test="${weather.high - weather.low > -6.66667}"><td>Wear breathable layers!</td></c:when>
+		</c:choose>	
+	</c:if>
 </tr>
 
 

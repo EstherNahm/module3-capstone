@@ -1,5 +1,8 @@
 package com.techelevator.npgeek.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 
@@ -18,8 +21,38 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	//**make void method to save the survey and INSERT into SQL
-	//***make method to get all the results of survey
+	@Override
+	public void saveSurveyResults(String parkCode, String emailAddress, String state, String activityLevel) {
+		String sqlInsertSurveyResults = "INSERT INTO survey_result (parkcode, emailaddress, state, activitylevel) " + 
+				"values (?, ?, ?, ?)";
+		jdbcTemplate.update(sqlInsertSurveyResults, parkCode, emailAddress, state, activityLevel);
+		}
+	
+
+	@Override
+	public List<SurveyResult> getResults() {
+		List<SurveyResult> theSurvey = new ArrayList<>();
+		SurveyResult survey;
+		String sqlSelectSurveyResults = "select * from survey_result";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectSurveyResults);
+		while (results.next()) {
+			survey = mapRowToSurveyResult(results);
+			theSurvey.add(survey);
+		}
+		return theSurvey;
+	}
+	
+	public String getState() {
+		String state = "";
+		String sqlSelectSurveyResults = "select max(state) from survey_result;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectSurveyResults);
+		while (results.next()) {
+			state = results.getString(1);
+		}
+		return state;
+	}
+	
+	
 	
 	private SurveyResult mapRowToSurveyResult(SqlRowSet results) {
 		SurveyResult survey = new SurveyResult();
