@@ -7,7 +7,7 @@ public class Weather {
 	private int low;
 	private int high;
 	private String forecast;
-	
+
 	/**
 	 * @return the parkCode
 	 */
@@ -67,5 +67,6 @@ public class Weather {
 	 */
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
-	}	
+	}
+	
 }

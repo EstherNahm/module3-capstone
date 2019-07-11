@@ -30,20 +30,50 @@ public class parkController {
 		}
 	
 
+	
+	//pass in HTTP session 
+	//PDAO.getparkCode 
+	//
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
-	public String showParkDetail(ModelMap model, @RequestParam String parkCode) {
+	public String showParkDetail(ModelMap model, @RequestParam String parkCode, HttpSession session) {
 		Park park = parkDAO.getParkByCode(parkCode);
 		model.put("park", park);
 		
-		return "selectedParkDetail";
-	}
-	
-	@RequestMapping(path="/weatherDetail", method=RequestMethod.POST)
-	public String showSelectedPark(ModelMap model, @RequestParam String parkCode) {
 		parkCode = parkCode.endsWith(",") ? parkCode.substring(0, parkCode.length()-1) : parkCode;
 		List<Weather> weather = weatherDAO.getWeatherByCode(parkCode);
 		model.put("weather", weather);
-		return "weatherDetail";
+		
+		String tempUnit = (String)session.getAttribute("tempUnit");
+		if(tempUnit==null){
+			tempUnit="F";
+			session.setAttribute("tempUnit", tempUnit);
+		}
+				model.put("tempUnit", tempUnit);
+		
+		//anything that comes out of session is an object; so cast it 
+		return "selectedParkDetail";
 	}
-
+	
+	
+	
+	@RequestMapping(path="/weatherDetail", method=RequestMethod.POST)
+	public String showSelectedPark(ModelMap model, @RequestParam String parkCode, @RequestParam String tempUnit, HttpSession session) {
+		parkCode = parkCode.endsWith(",") ? parkCode.substring(0, parkCode.length()-1) : parkCode;
+//		List<Weather> weather = weatherDAO.getWeatherByCode(parkCode);
+//		model.put("weather", weather);
+		
+//		String tempUnit = (String)session.getAttribute("tempUnit");
+//		if(tempUnit==null){
+//			tempUnit="F";
+//			session.setAttribute("tempUnit", tempUnit);
+//		}
+//		
+//		model.put("tempUnit", tempUnit);
+		
+		session.setAttribute("tempUnit", tempUnit);
+		
+		return "redirect:/parkDetail?parkCode="+parkCode;
+	}	
+	
+	
 }
