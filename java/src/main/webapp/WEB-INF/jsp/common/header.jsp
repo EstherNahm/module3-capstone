@@ -11,11 +11,15 @@
 <meta charset="UTF-8">
 </head>
 
+
 <body>
 <div class="nav" id="ournav">
-	<a href = "http://localhost:8080/m3-java-capstone/">home</a>
-<a href = "http://localhost:8080/m3-java-capstone/userInput">survey</a>
+	<a href="home">home</a>
+	<a href="userInput">survey</a>
+	<a href="surveyResult">favorite parks</a>
+	<a id="quote" href="http://www.abbeyweb.net/introduction.html">May your trails be crooked, winding, lonesome, dangerous - leading to the most amazing view.</a>
 </div>
+
 </body>
 </html>    
     

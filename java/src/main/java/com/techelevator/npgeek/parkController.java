@@ -29,7 +29,7 @@ public class parkController {
 	@Autowired
 	private SurveyDAO surveyDAO;
 
-	@RequestMapping(path="/", method=RequestMethod.GET)
+	@RequestMapping(path= {"/", "home"}, method=RequestMethod.GET)
 	public String showHomePage(ModelMap model) {
 		model.addAttribute("allParks", parkDAO.getParks());
 		return "homePage";
@@ -67,7 +67,8 @@ public class parkController {
 	}	
 	
 	@RequestMapping(path="/userInput", method=RequestMethod.GET)
-	public String userSurveyInput() {
+	public String userSurveyInput(ModelMap model) {
+		model.addAttribute("allParks", parkDAO.getParks());
 		return "userInput";
 	}
 	
@@ -80,13 +81,12 @@ public class parkController {
 	
 	@RequestMapping(path="/surveyResult", method=RequestMethod.GET)
 	public String showSurveyResult(ModelMap model) {
-		List<Park> parks = new ArrayList<>();
 		List<FavoriteParks> favoriteparks = surveyDAO.favoriteParks();
 		for (FavoriteParks fp: favoriteparks) {
 			Park park = parkDAO.getParkByCode(fp.getParkCode());
-			parks.add(park);
+			fp.setPark(park);
 		}
-		model.addAttribute("parks", parks);
+		model.addAttribute("favoriteParks", favoriteparks);
 		
 		return "surveyResult";
 		}

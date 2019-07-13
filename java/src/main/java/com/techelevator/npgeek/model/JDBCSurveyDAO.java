@@ -42,11 +42,12 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		return theSurvey;
 	}
 	
+	@Override
 	public List<FavoriteParks> favoriteParks() {
 		List<FavoriteParks> favoriteParks = new ArrayList<>();
 		String sqlSelectSurveyResults = "select count(*) as survey_count, parkcode from survey_result " + 
 				"group by parkcode " + 
-				"order by survey_count desc";
+				"order by survey_count desc, parkcode asc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectSurveyResults);
 		while (results.next()) {
 			String parkcode = results.getString("parkcode");
@@ -60,6 +61,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	
 	private SurveyResult mapRowToSurveyResult(SqlRowSet results) {
 		SurveyResult survey = new SurveyResult();
+		
 		
 		survey.setSurveyId(results.getInt("surveyId"));
 		survey.setEmailAddress(results.getString("emailaddress"));

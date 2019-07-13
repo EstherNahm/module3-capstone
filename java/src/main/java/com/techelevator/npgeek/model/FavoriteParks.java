@@ -3,6 +3,7 @@ package com.techelevator.npgeek.model;
 public class FavoriteParks {
 	private String parkCode;
 	private int surveyCount;
+	private Park park;
 	
 	public FavoriteParks(String parkCode, int surveyCount) {
 		this.parkCode = parkCode;
@@ -31,6 +32,12 @@ public class FavoriteParks {
 	 */
 	public void setSurveyCount(int surveyCount) {
 		this.surveyCount = surveyCount;
+	}
+	public Park getPark() {
+		return park;
+	}
+	public void setPark(Park park) {
+		this.park = park;
 	}
 	
 	

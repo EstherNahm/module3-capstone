@@ -1,27 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Please take this survey:</title>
 </head>
 <body>
 
+<div class ="userinput">
+
+<div class="surveyforms">
+<h3 class= "surveytitle"> Vote for your favorite park! </h3>
+
+<div class="surveypage">
 <c:url var="formAction" value="/userInput" /> <%--URL for when form is submitted --%>
 	<form method="POST" action="${formAction}">
-
-<label for="emailAddress">Your e-mail address:</label>
-	<input type="text" name="emailAddress" id="emailAddress"/>
-	<br>
 	
-	<a>Your home state:</a>
-	<select name="state">
-		<option value="blankToStart"></option>
+	<a id="surveyfont">Home state:</a>
+	<select name="state" class="customtable">
 		<option value="Alabama">Alabama</option> 
 		<option value="Alaska">Alaska</option> 
 		<option value="Arizona">Arizona</option> 
@@ -73,38 +72,59 @@
 		<option value="Wisconsin">Wisconsin</option> 
 		<option value="Wyoming">Wyoming</option>
 	</select>
-	<br>
+	<br/>
 	
-	<a>Your activity level:</a>
-	<select name="activityLevel">
-		<option value="blankToStart"></option>
+	<a id="surveyfont">Activity level:</a>
+	<select name="activityLevel" class="customtable">
 		<option value="inactive">Inactive</option>
  	 	<option value="sedentary">Sedentary</option>
  	 	<option value="active">Active</option>
  		 <option value="extremelyactive">Extremely active</option>
 	</select>
-	<br>
+	<br/>
 	
-	<a>Your favorite park:</a>
-	<select name="parkCode">
-		<option value="blankToStart"></option>
-		<option value="CVNP">Cuyahoga Valley National Park</option>
-		<option value="ENP">Everglades National Park</option>
-		<option value="GCNP">Grand Canyon National Park</option>
-		<option value="GNP">Glacier National Park</option>
-		<option value="GSMNP">Great Smoky Mountains National Park</option>
-		<option value="GTNP">Grand Teton National Park</option>
-		<option value="MRNP">Mount Rainier National Park</option>
-		<option value="RMNP">Rocky Mountain National Park</option>
-		<option value="YNP">Yellowstone National Park</option>
-		<option value="YNP">Yosemite National Park</option>
+	<a id="surveyfont">Favorite park:</a>
+		<select name="parkCode" class="customtable">
+		<c:forEach var="park" items="${allParks}">
+		<option value="${park.parkCode}">${park.parkName}</option>
+	</c:forEach>
 	</select>
-	<br>
-	
-	<a><input class="formSubmitButton" type="submit" value="Submit" /></a>
 	
 	
+	<div class="emailbox">
+	<label for="inp" class="inp">
+  	<input class ="email" type="text" id="inp"  name="emailAddress">
+  	<span class="label">E-mail address:</span>
+  <span class="border"></span>
+</label>
+</div>
+	<br/>
+	<br/>
 	
+	<div class="surveybutton">
+	<a><input id="surveysubmit" class="button" type="submit" value="Submit" /></a>
+	</div>
 </form>
+
+
+<div class = "logo">
+<c:url var="logo" value="img/logo.png"/>
+	<a>
+		<img src="${logo}" alt="logo"/>
+	</a>
+	<div class="edwardquote">
+	<h4><a id= "edwardquote" href="https://en.wikipedia.org/wiki/Edward_Abbey">And may your mountains rise into and above the clouds. -Edward Abbey</a></h4>
+	</div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
 </body>
 </html>
+
+
+<c:import url="/WEB-INF/jsp/common/footer.jsp"/>
