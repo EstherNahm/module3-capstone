@@ -1,15 +1,19 @@
 /* HEADER & FOOTER */
 
 .nav{
+	
 	background-color:#D7E4F0;
 	overflow: hidden;
+	border-bottom: 5px solid #F7F8F8;
+	
 }
 .nav a{
 	color: #565E6D;
 	text-align: center;
-	padding: 10px;
+	padding: 20px;
 	text-decoration: underline;
 	font-size: 24px;
+	
 }
  .nav a:hover {
   background-color: #F7F8F7;
@@ -26,36 +30,48 @@
 	text-decoration: none;
 }
 
+
 #footer {
-	background-color: #D7E4F0;
-	color: #565E6D;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	font-size: 15px;
+  
+  height: 2.5rem;   
+  background-color: #D7E4F0;
+	color: #565E6D;    
+	font-size: 15px;  
 	padding-left: 1.5em;
+	padding-top: 7px;
+	border-top: 5px solid #F7F8F8;
+	
 }
+
+
+
 
 /* HOMEPAGE */
 
+
 #grid {
+  color: #565E6D;
   display: grid;
   grid-gap: 15px;
   grid-auto-rows: minmax(150px, 1fr);
   grid-auto-flow: row dense;	
 }
 
+
+
+
 .tile {
   display: flex;
   flex-direction: column;
-  padding: 5px;
-  border: 1px solid #ccc;
+  padding: 7px;
+  border: 2px solid #AAB9CF;
   border-radius: 3px;
   box-shadow: -2px -2px 7.5px 0px rgba(68, 68, 68, 0.4);
-  background-color: #F7F7F7;
+  background-color: #F7F8F8;
 
 }
 
-.tile a.product-image img {
+.tile a.parkImage img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -67,10 +83,7 @@
   font-weight: bold;
 }
 
-.parkimage {
-	padding:1px;
-   border:2px solid #565E6D;
-}
+
 #card-page #grid {
   padding: 13px;
   grid-template-columns: .5fr .5fr .5fr;
@@ -80,31 +93,48 @@
 
 #welcome {
 	padding: 25px;
-	color: #565E6D;
 	text-align: center;
-	background-color: #F7F7F7;
+	background-color: #E1E2E5;
+	border-bottom: 5px solid #F7F8F8;
+	color: #565E6D;
 }
+
+.homepage {
+	background-color: #565E6D;
+}
+
+
 
 /* SELECTED PARK DETAILS */
 body {
-	background-color: #F7F7F7;
+	background-color: #F7F8F8;
 	max-width: 100%;
 }
 
 #parkname {
+	border-top: 4px solid #F7F8F8;
 	color: #565E6D;
 	padding-top: 25px;
 	padding-bottom: 25px;
 	padding-left: 25px;
 	text-align: left;
+	background-color: #E1E2E5;
 }
 
+
+#parkimgdetails {
+	padding:2px;
+   border:3px solid #C8CCCD;
+	
+}
 .parkfacts {
+	
 	display: flex;
  	flex-direction: row;
  	padding-left: 25px;
- 	padding-top: 15px;
+ 	padding-top: 20px;
  	background-color:#565E6D;
+ 	
 }
 
 #parkfacts {
@@ -117,6 +147,7 @@ body {
 	background-color: #565E6D;
 	color: #F7F7F7;
 	padding-left: 25px;
+	border-bottom: 5px solid #F7F8F8;
 }
 
 #parkquote {
@@ -126,8 +157,8 @@ body {
 }
 
 .button {
-	color: #6D6F7F;
-    border-color: #6D6F7F;
+	color: #565E6D;
+    border-color: #565E6D;
     display: inline-block;
     margin: 6px;
     font-size: inherit;
@@ -145,12 +176,25 @@ body {
 }
 
 .tempbuttons {
+	padding-top: 20px;
 	padding-left: 25px;
+	background-color: #D7E4F0;;
+	padding-bottom: 20px;
+	border-bottom: 5px solid #F7F8F8;
+}
+
+#selector {
+	color: #565E6D; 
 }
 
 .weatherforecast {
 	display: flex;
  	flex-direction: row;
+ 	color: #F7F7F7;
+	background-color:#565E6D;
+	justify-content: center;
+	padding: 1%;
+	padding-top: 35px;
 }
 
 #weatherforecast {
@@ -172,23 +216,20 @@ ul {
 	font-size: 15px;
 }
 
-.weatherforecast {
-	color: #F7F7F7;
-	background-color:#565E6D;
-	justify-content: center;
-	padding: 1%;
-}
-
 .forecast {
-	color: #565E6D;
+	padding-top: 25px;
+
+	color: #565E6D;	
 }
 
 /* SURVEY RESULT PAGE */
 
 .userinput {
 	color: #565E6D;
-	background-color: #C8CCCD;	
+	background-color: #E1E2E5;	
 	padding: 50px;
+	padding-top: 80px;
+	padding-bottom: 80px;
 }
 .surveypage {
 	display: grid;
@@ -307,10 +348,15 @@ ul {
 	margin-left: 90px;
 }
 
+#weatherimage {
+	padding:2px;
+   border:3px solid #C8CCCD;
+}
+
 /* SURVEY RESULT PAGE */
 .surveyresults {
 	background-color: #565E6D;
-	padding: 25px;
+	padding: 40px;
 }
 
 .favoritepark{
@@ -325,6 +371,12 @@ ul {
  	
 }
 
+#resultstitle {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	color: #C8CCCD;
+}
+
 .parkrank {
 	padding-left: 40px;
 	color: #C8CCCD;
@@ -336,14 +388,6 @@ ul {
 	flex-direction: column;
 }
 .grid2 img {
-	 padding:2px;
+	padding:2px;
    border:3px solid #C8CCCD;
-}
-
-#resultstitle {
-	padding-top: 25px;
-	padding-bottom: 10px;
-	padding-left: 20px;
-	content-align: center;
-	color: #C8CCCD;
 }

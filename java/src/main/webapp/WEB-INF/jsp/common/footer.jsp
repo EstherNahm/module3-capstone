@@ -7,8 +7,9 @@
 
 </head>
 <body>
+<div id="page-container">
 
-<p id="footer">Copyright © 2019 Esther & Lori Inc.</p>
-
+<footer id="footer">Copyright © 2019 Esther & Lori Inc.</footer>
+</div>
 </body>
 </html>

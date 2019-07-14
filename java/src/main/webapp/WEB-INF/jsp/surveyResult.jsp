@@ -14,7 +14,7 @@
 <body>
 
 	<div class="surveyresults">
-		<h1 id="resultstitle">YOUR FAVORITE PARKS</h1>
+		<h1 id="resultstitle">YOUR FAVORITE PARKS:</h1>
 		
 		<div class="favoritepark">
 		

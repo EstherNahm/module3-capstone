@@ -7,12 +7,12 @@
 <body>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />    
-
+<div class="selectedpark">
 <h1 id="parkname">${park.parkName}</h1>
 
 <div class ="parkfacts">
 	<c:url var="parkImage" value="/img/parks/${fn:toLowerCase(park.parkCode)}.jpg"/>
-	<a><img src="${parkImage}"/></a>
+	<a><img id="parkimgdetails" src="${parkImage}"/></a>
 	<p id = "parkfacts">
 	<strong>ABOUT:</strong><br/>
 		Size: ${park.acreage} acres<br/>
@@ -43,12 +43,15 @@
 	<div class="formInput">
 		<input type="hidden" name="parkCode" id="parkCode"/>
 	</div>
+
 <div class="forecast">
-	<h2>5 DAY WEATHER FORECAST FOR ${fn:toUpperCase(park.parkName)}</h2>	
-		<p>Please select Fahrenheit or Celsius:</p>
+	<h2>5 day weather forecast for ${park.parkName}</h2><br/>
+		<h4 id="selector">Please select:</h4>
 </div>
+<div class ="buttons">
 		<input class="button" type="submit" value="F" name="tempUnit" id="F">
 		<input class="button" type="submit" value="C" name="tempUnit" id="C">
+	</div>
 	</form>
 </div>
 
@@ -110,6 +113,7 @@
 	</div>
 </div>
 </c:forEach>
+</div>
 </div>
 </body>
 

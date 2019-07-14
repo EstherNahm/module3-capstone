@@ -5,7 +5,7 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-
+<div class="homepage">
 <h1 id="welcome">WELCOME TO THE NATIONAL PARKS!</h1>
 <div id="card-page">
 <div id="grid">
@@ -16,7 +16,7 @@
 				<c:param name="parkCode" value="${park.parkCode}"/>
 			</c:url>
 			
-		<a class="parkimage" href="${parkDetailPath}">
+		<a class="parkImage" href="${parkDetailPath}">
 			<img src="${parkImage}" alt="NationalParks"/>
 		</a>
 		<div class="details">
@@ -27,5 +27,5 @@
 	</c:forEach>
 </div>
 </div>
-
+</div>
 <c:import url="/WEB-INF/jsp/common/footer.jsp"/>
