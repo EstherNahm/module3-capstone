@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JDBCWeatherDAO implements WeatherDAO {
-	
+
 	private JdbcTemplate jdbcTemplate;
-	
+
+	//link JDBC template
 	@Autowired
 	public JDBCWeatherDAO(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
-
 	
+	//method to get the forecasts by park
 	@Override
 	public List<Weather> getWeatherByCode(String parkCode) {
 		List<Weather> theWeather = new ArrayList<>();
@@ -32,19 +32,20 @@ public class JDBCWeatherDAO implements WeatherDAO {
 			weather = mapRowToWeather(results);
 			theWeather.add(weather);
 		}
-		return theWeather;	
+		return theWeather;
 	}
 	
-	private Weather mapRowToWeather (SqlRowSet results) {
+	//access to weather table in sql
+	private Weather mapRowToWeather(SqlRowSet results) {
 		Weather weather = new Weather();
-		
+
 		weather.setParkCode(results.getString("parkcode"));
 		weather.setFiveDayForecastValue(results.getInt("fivedayforecastvalue"));
 		weather.setLow(results.getInt("low"));
 		weather.setHigh(results.getInt("high"));
 		weather.setForecast(results.getString("forecast"));
-	
+
 		return weather;
 	}
-	
+
 }
